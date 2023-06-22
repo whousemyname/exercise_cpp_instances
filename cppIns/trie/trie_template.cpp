@@ -6,8 +6,9 @@ using std::string;
 class Trie {
 public:
     bool isEnd;
+    string val;
     vector<Trie*> next;
-    Trie() : next(26, nullptr), isEnd(false){}
+    Trie() : next(26, nullptr), isEnd(false), val("") {}
     
     void insert(string word) {
         Trie* temp = this;
@@ -19,6 +20,7 @@ public:
             temp = temp->next[index];
         }
         temp->isEnd = true;
+        temp->val = word;
     }
     
     bool search(string word) {
